@@ -10,7 +10,10 @@ import {
   Input,
   Card,
   Alert,
-  Option
+  Option,
+  Radio,
+  RadioGroup,
+  Dialog
 } from 'element-ui';
 
 const elements = [Button,
@@ -20,7 +23,10 @@ const elements = [Button,
   Input,
   Card,
   Alert,
-  Option
+  Option,
+  Radio,
+  RadioGroup,
+  Dialog
 ];
 locale.use(lang);
 elements.forEach(El => Vue.use(El, {locale}));

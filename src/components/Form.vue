@@ -23,8 +23,16 @@
 <script>
 export default {
   name: 'Form',
-  data: ()=> ({
-    formData: {
+  data: () => {
+     const customValidateForm = (rule, value, cb) => {
+      if (value<=0) {
+        cb(new Error('Value must be greater than 0'));
+      } else {
+        cb();
+      }
+    };
+    return {
+      formData: {
       type: 'INCOME', //for select
       comment: '',
       value: 0,
@@ -47,13 +55,15 @@ export default {
        message: 'Please input message',
        trigger: 'change'
       },
-       {
-         type: 'number',
-       message: 'Value must be a number',
+       {validator: customValidateForm,
        trigger: 'change'
        }]
+      }
+
     }
-  }),
+
+
+  },
   methods: {
     onSubmit(){
       this.$refs.addItemForm.validate(valid=>{

@@ -30,7 +30,7 @@ export default {
       2: {
         type: 'OUTCOME',
         comment: 'Some outcome comment',
-        value: -63,
+        value: 63,
         id: 2
       }
     },
@@ -39,7 +39,8 @@ export default {
   }),
   computed: {
     totalBalance() {
-      return Object.values(this.list).reduce((acc, item)=> acc+item.value, 0)
+
+      return Object.values(this.list).reduce((acc, item)=>((item.type=="OUTCOME" && item.value>0)? acc+item.value*(-1):acc+item.value), 0)
     }
 
   },
